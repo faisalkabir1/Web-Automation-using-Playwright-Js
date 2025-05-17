@@ -4,8 +4,10 @@ import { test, expect } from "@playwright/test";
 import RegistrationPage from "../pages/RegistrationPage";
 import jsonData from "../utils/userData.json";
 import fs from "fs";
+import dotenv from "dotenv";
+dotenv.config();
 
-test.only("User registration by providing all info", async ({ page }) => {
+test("User registration by providing all info", async ({ page }) => {
   await page.goto("/");
 
   const reg = new RegistrationPage(page);
@@ -28,13 +30,13 @@ test.only("User registration by providing all info", async ({ page }) => {
 
   jsonData.push(userModel);
   fs.writeFileSync("./Utils/userData.json", JSON.stringify(jsonData, null, 2));
+  await page.waitForTimeout(3000); // waits for 3 seconds
 });
 
 //Email Assertion
 
 const apiURL = "https://gmail.googleapis.com";
-const token =
-  "ya29.a0AW4XtxgQCjdwj9PZXP8k4C8OPqmg-DbMqcQJ-fI4Rl16CoPyNIQ9qGL7D5odpi0-FgFXshdB4jfDfU1_nIKYeutqT8nxEAtpQvEBjZWwXMr_fEtjZ-_NwU0mcuM3MG9IeW4nUx2UrwgO82JUTUQWAd928VjoZ1GV40CyHPC4aCgYKAakSARISFQHGX2MidhtDi6i7diq0p1fA5znB_w0175";
+const token = process.env.TOKEN;
 test("Get latest email and assert the registration successful message", async ({
   request,
 }) => {
