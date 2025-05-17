@@ -34,4 +34,31 @@ test('User registration by providing all info', async ({ page }) => {
   await expect(toast).toBeVisible({ timeout: 10000 });
   await expect(toast).toContainText('registered successfully!');
 
+ 
+
+});
+ //Email Assertion
+
+  const apiURL = "https://gmail.googleapis.com";
+  const token = "ya29.a0AW4XtxgQCjdwj9PZXP8k4C8OPqmg-DbMqcQJ-fI4Rl16CoPyNIQ9qGL7D5odpi0-FgFXshdB4jfDfU1_nIKYeutqT8nxEAtpQvEBjZWwXMr_fEtjZ-_NwU0mcuM3MG9IeW4nUx2UrwgO82JUTUQWAd928VjoZ1GV40CyHPC4aCgYKAakSARISFQHGX2MidhtDi6i7diq0p1fA5znB_w0175";
+test.only('Get latest email and assert the registration successful message' , async ({request}) => {
+  const response1 = await request.get(apiURL+"/gmail/v1/users/me/messages/",{
+ headers :{
+  "Accept" : "application/json",
+  "Authorization" : "Bearer "+token
+ }
+});
+const data = await response1.json();
+const emailID = data.messages[0].id;
+
+const response2 = await request.get( apiURL+"/gmail/v1/users/me/messages/"+emailID,{
+ headers :{
+  "Accept" : "*/*",
+  "Content-type" : "application/json",
+  "Authorization" : "Bearer "+token
+ }
+});
+const resJson = await response2.json();
+const latestMail = resJson.snippet;
+expect(latestMail).toContain("Welcome to our platform");
 });
