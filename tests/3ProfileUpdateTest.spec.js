@@ -17,6 +17,15 @@ test("Go to profile settings and upload a profile photo and logout", async ({
 
   await profile.updateProfilePic("resources/profilepic.png");
 
+  const [dialog] = await Promise.all([
+    page.waitForEvent("dialog"),
+    page.getByRole("button", { name: "Upload Image" }).click(),
+  ]);
+
+  // Assert the dialog message
+  expect(dialog.message()).toBe("Image uploaded successfully!");
+  //  accept it
+  await dialog.dismiss().catch(() => {});
   // Logout
   await profile.logout();
 });

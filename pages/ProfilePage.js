@@ -18,14 +18,6 @@ class ProfilePage {
     await this.editBtn.click();
 
     await this.chooseFileBtn.setInputFiles(imagePath);
-
-    const [dialog] = await Promise.all([
-      this.page.waitForEvent("dialog"),
-      this.uploadBtn.click(),
-    ]);
-
-    console.log(`Dialog message: ${dialog.message()}`);
-    await dialog.dismiss().catch(() => {});
   }
 
   async logout() {
