@@ -1,6 +1,6 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
-import jsonData from "../utils/userData.json";
+import jsonData from "../resources/userData.json";
 import LoginPage from "../pages/LoginPage";
 
 import { faker } from "@faker-js/faker";
@@ -50,7 +50,7 @@ test("Newly created user login and add items", async ({ page }) => {
 
   // Save added items to JSON
   fs.writeFileSync(
-    "./utils/addedItems.json",
+    "./resources/addedItems.json",
     JSON.stringify(addedItems, null, 2)
   );
 

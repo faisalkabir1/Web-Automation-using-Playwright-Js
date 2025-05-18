@@ -2,7 +2,7 @@
 import { faker } from "@faker-js/faker";
 import { test, expect } from "@playwright/test";
 import RegistrationPage from "../pages/RegistrationPage";
-import jsonData from "../utils/userData.json";
+import jsonData from "../resources/userData.json";
 import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
@@ -29,7 +29,10 @@ test("User registration by providing all info", async ({ page }) => {
   await expect(toast).toContainText("registered successfully!");
 
   jsonData.push(userModel);
-  fs.writeFileSync("./utils/userData.json", JSON.stringify(jsonData, null, 2));
+  fs.writeFileSync(
+    "./resources/userData.json",
+    JSON.stringify(jsonData, null, 2)
+  );
   await page.waitForTimeout(3000); // waits for 3 seconds
 });
 
