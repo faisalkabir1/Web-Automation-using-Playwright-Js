@@ -29,7 +29,7 @@ test("User registration by providing all info", async ({ page }) => {
   await expect(toast).toContainText("registered successfully!");
 
   jsonData.push(userModel);
-  fs.writeFileSync("./Utils/userData.json", JSON.stringify(jsonData, null, 2));
+  fs.writeFileSync("./utils/userData.json", JSON.stringify(jsonData, null, 2));
   await page.waitForTimeout(3000); // waits for 3 seconds
 });
 
