@@ -1,15 +1,9 @@
-// utils/gmailUtils.js
-
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const apiURL = "https://gmail.googleapis.com";
 const token = process.env.TOKEN;
 
-/**
- * Fetches the latest Gmail snippet.
- * @param {object} request - Playwright request context.
- * @returns {Promise<string>} - Latest email snippet text.
- */
 async function getLatestGmailSnippet(request) {
   const response1 = await request.get(`${apiURL}/gmail/v1/users/me/messages/`, {
     headers: {
@@ -36,4 +30,4 @@ async function getLatestGmailSnippet(request) {
   return resJson.snippet;
 }
 
-module.exports = { getLatestGmailSnippet };
+export default getLatestGmailSnippet;
