@@ -5,7 +5,7 @@ import RegistrationPage from "../pages/RegistrationPage";
 import jsonData from "../resources/userData.json";
 import fs from "fs";
 import dotenv from "dotenv";
-import { getLatestGmailSnippet } from "../utils/gmailUtils";
+import getLatestGmailSnippet from "../utils/gmailUtils";
 dotenv.config();
 
 test("User registration by providing all info", async ({ page }) => {

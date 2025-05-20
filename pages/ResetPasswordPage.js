@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { getLatestGmailSnippet } from "../utils/gmailUtils.js";
+import getLatestGmailSnippet from "../utils/gmailUtils.js";
 import fs from "fs";
 import { faker } from "@faker-js/faker";
 
