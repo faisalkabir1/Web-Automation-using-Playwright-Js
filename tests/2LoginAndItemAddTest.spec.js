@@ -35,7 +35,7 @@ test("Newly created user login and add items", async ({ page }) => {
   // await page.pause();
   for (let i = 0; i < 2; i++) {
     const item = {
-      itemName: faker.commerce.productName(),
+      itemName: faker.commerce.product(),
       amount: faker.commerce.price({ min: 10, max: 1000 }),
       quantity: "1",
       purchaseDate: "2026-05-10",
@@ -58,7 +58,7 @@ test("Newly created user login and add items", async ({ page }) => {
   page.on("dialog", async (dialog) => await dialog.accept());
 
   // Assertion after waiting for table to load
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(4000);
   const rows = await page.locator("tr").allTextContents();
 
   expect(rows.length).toBeGreaterThanOrEqual(3); // 1 header + 2 items
