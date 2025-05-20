@@ -1,8 +1,6 @@
 // @ts-check
-// @ts-check
 import { test, expect } from "@playwright/test";
 import ResetPasswordPage from "../pages/ResetPasswordPage.js";
-import fs from "fs";
 import jsonData from "../resources/userData.json" assert { type: "json" };
 const latestUserData = jsonData[jsonData.length - 1];
 
