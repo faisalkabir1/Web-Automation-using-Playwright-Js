@@ -35,22 +35,28 @@ This project automates the core user flows of [DailyFinance](https://dailyfinanc
 ## ❌ Negative Test Cases
 
 - Try to User Login with **Invalid credential**
-- Reset password with **Unregistered email**
-- Reset password with **Invalid email format**
-- Email input field validation via `checkValidity()`
+- Try to Reset password with **Unregistered email**
+- Try Reset password with **Invalid email format**, Email input field validation via `checkValidity()`
 - Try to Login with **Old Credentials**
 
-### 🔗 View Test Cases: [Click here..]
+### 🔗 View Test Cases: [Click here..](https://docs.google.com/spreadsheets/d/11C8W0Xy9B5GBr3FXRnxQrLAFq3vI46Ps/edit?usp=sharing&ouid=110591976413796555813&rtpof=true&sd=true)
 
 ## 📊 Test Reports
 
 ### ✅ Allure Report
+![image](https://github.com/user-attachments/assets/0c7539ff-8357-487b-bbec-dde3821b82b6)
+![image](https://github.com/user-attachments/assets/8a44901b-0455-49ee-b7ef-ef57eafaacc3)
+
 ---
 
 ## 🎥 Demo Recording
 
 📺 **Watch the Automation Demo:**  
 >
+
+https://github.com/user-attachments/assets/146adc5a-42be-4dbb-abff-f3c50246cc76
+
+
 ---
 ## 🚀 How to Run This Project
 
