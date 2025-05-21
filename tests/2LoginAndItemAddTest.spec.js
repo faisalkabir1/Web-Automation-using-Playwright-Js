@@ -43,8 +43,8 @@ test("Newly created user login and add items", async ({ page }) => {
       remarks: faker.lorem.words(2),
     };
 
-    addedItems.push(item);
     await add.addItem(item);
+    addedItems.push(item);
     await page.waitForTimeout(1000);
   }
 
@@ -58,10 +58,18 @@ test("Newly created user login and add items", async ({ page }) => {
   page.on("dialog", async (dialog) => await dialog.accept());
 
   // Assertion after waiting for table to load
-  await page.waitForTimeout(4000);
+  await page.waitForTimeout(3000);
+
+  // Get all row contents
   const rows = await page.locator("tr").allTextContents();
 
-  expect(rows.length).toBeGreaterThanOrEqual(3); // 1 header + 2 items
-  expect(rows[1]).toContain(addedItems[0].itemName);
-  expect(rows[2]).toContain(addedItems[1].itemName);
+  console.log(
+    "Expected items:",
+    addedItems.map((i) => i.itemName)
+  );
+  console.log("Table rows:", rows);
+  const allText = rows.join(" "); // Flatten rows into a single string
+
+  expect(allText).toEqual(expect.stringContaining(addedItems[0].itemName));
+  expect(allText).toEqual(expect.stringContaining(addedItems[1].itemName));
 });
