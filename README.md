@@ -101,7 +101,6 @@ npx allure open allure-report
 |-------------|------------------------------------------|
 | Playwright  | End-to-end browser automation testing    |
 | Faker.js    | Random test data generation              |
-| Mochawesome | HTML test report for Mocha               |
 | dotenv      | Managing environment variables           |
 | Allure      | Advanced test report visualization       |
 | Gmail API   | Reading password reset email             |
