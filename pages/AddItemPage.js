@@ -16,8 +16,6 @@ class AddItemPage {
     await this.addCostButton.click();
     await this.itemNameTxt.fill(item.itemName);
     await this.amountTxt.fill(item.amount);
-    // await this.quantityBtn.click();
-    // await this.quantityBtn.fill(item.quantity);
     await this.purchaseDatePicker.fill("");
     await this.purchaseDatePicker.fill(item.purchaseDate);
     await this.remarksTxt.fill(item.remarks);
